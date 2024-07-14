@@ -5,7 +5,9 @@ Assignment
 
 Psuedo code
 ************
+
 .. code-block:: C
+
     mutex mLock;
     random_num_gen r;
 
@@ -18,7 +20,7 @@ Psuedo code
         mLock.lock();
 
         r.seed(std::time(nullptr));
-        int n = r % 50;
+        int n = r() % 50;
 
         std::generate(arr+numOfBytes, arr+numOfBytes+n, std::ref(r));
 
@@ -59,20 +61,28 @@ This application can be built and executed on linux using native_posix/native_si
 
 1. Set up the zephyr workspace to build projects:
     1.1  Update your linux distro
+
     1.2  Ensure you have latest version of
+
        .. code-block:: console
+
             cmake --version
             python --version
             dtc --version
 
         Installed. If not install them.
+        
     1.3 setup a python venv workspace,
+
         .. code-block:: console
+
             python3 -m venv ~/zephyrproject/.venv
             source ~/zephyrproject/.venv/bin/activate
 
     1.4 Install west and get zephyr source code 
+
         .. code-block:: console
+
             pip install west
             west init ~/zephyrproject
             cd ~/zephyrproject
@@ -81,7 +91,9 @@ This application can be built and executed on linux using native_posix/native_si
             pip install -r ~/zephyrproject/zephyr/scripts/requirements.txt
 
     1.5 Install SDK
+
         .. code-block:: console
+
             cd ~
             wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.8/zephyr-sdk-0.16.8_linux-x86_64.tar.xz
             tar xvf zephyr-sdk-0.16.8_linux-x86_64.tar.xz
@@ -89,21 +101,28 @@ This application can be built and executed on linux using native_posix/native_si
             ./setup.sh
 
     1.6 Verify if setup works by building a sample hello_world app,
+
         .. code-block:: console
+
             cd ~/zephyrproject/zephyr/
             west build -b native_posix samples/hello_world
             ./build/zephyr/zephyr.exe
 
-            press :kbd: `CTRL+C` to quit the app otherwise the kernel will keep Running.
+        press :kbd: `CTRL+C` to quit the app otherwise the kernel will keep Running.
 
 2. Git clone app in the `zephyrproject` workspace.
+
     2.1 Build the project
+
         .. code-block:: console
+
             cd Zephyr-assignment
             west build -b native_posix ./
 
     2.2 Run the project and get the Output
+
         .. code-block:: console
+
             ./build/zephyr/zephyr.exe
     
 
@@ -111,6 +130,7 @@ Sample Output
 =============
 
 .. code-block:: console
+
      ./build/zephyr/zephyr.elf 
     *** Booting Zephyr OS build v3.6.0-5602-g62893328293f ***
     DBG: producer produced 6 random bytes

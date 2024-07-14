@@ -67,7 +67,7 @@ void consumer()
 	k_mutex_unlock(&mLock);
 }
 
-extern "C" void producerThread(void * p1, void * p2, void * p3)
+void producerThread(void * p1, void * p2, void * p3)
 {
 	while(true)
 	{
@@ -75,7 +75,7 @@ extern "C" void producerThread(void * p1, void * p2, void * p3)
 	}
 }
 
-extern "C" void consumerThread(void *p1, void *p2, void *p3)
+void consumerThread(void *p1, void *p2, void *p3)
 {
 	while(true)
 	{
@@ -88,5 +88,6 @@ K_KERNEL_THREAD_DEFINE(th2, 500, consumerThread, nullptr, nullptr, nullptr, 1, 0
 
 int main(void)
 {
+	std::printf("DBG: Exiting Main thread!\n");
 	return 0;
 }
